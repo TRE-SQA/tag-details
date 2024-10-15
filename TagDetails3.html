@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tag Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box; /* 确保包含 padding */
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .row {
+            display: flex; /* 使用flex布局 */
+            justify-content: space-between; /* 保持左右对齐 */
+            padding: 10px 0;
+            border-bottom: 1px solid #ccc;
+            font-size: 16px; /* 基本字体大小 */
+        }
+        .label {
+            font-weight: bold;
+            color: #555;
+            flex: 1; /* 使label自适应宽度 */
+        }
+        .content {
+            flex: 1; /* 使content自适应宽度 */
+            text-align: right; /* 右侧对齐 */
+            color: #333;
+        }
+        /* 媒体查询，适配小屏幕 */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 20px; /* 小屏幕时缩小标题字体 */
+            }
+            .row {
+                font-size: 14px; /* 小屏幕时缩小文本字体 */
+            }
+            .label, .content {
+                flex: 1; /* 仍然保持在同一行，但缩小 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tag Details</h1>
+        <div class="row">
+            <div class="label">UID:</div>
+            <div class="content" id="uid">0xE0163C014176<span id="dynamic-part"></span></div>
+        </div>
+        <div class="row">
+            <div class="label">Family:</div>
+            <div class="content">ICODE</div>
+        </div>
+        <div class="row">
+            <div class="label">Block:</div>
+            <div class="content">04</div>
+        </div>
+        <div class="row">
+            <div class="label">Manufacturer:</div>
+            <div class="content">NXP</div>
+        </div>
+        <div class="row">
+            <div class="label">Memory:</div>
+            <div class="content">256 bytes</div>
+        </div>
+        <div class="row">
+            <div class="label">Protocol:</div>
+            <div class="content">ISO 15693</div>
+        </div>
+    </div>
+
+    <script>
+        // 生成随机的16进制数来替换UID的动态部分
+        function generateRandomHex() {
+            let hex = Math.floor(Math.random() * 0xFFFFFF).toString(16).toUpperCase();
+            return hex.padStart(6, '0'); // 保证六位数，不足补0
+        }
+
+        // 页面加载时更新UID的动态部分
+        document.getElementById('dynamic-part').textContent = generateRandomHex();
+    </script>
+</body>
+</html>
